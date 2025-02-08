@@ -1,0 +1,23 @@
+[workspace]
+members = [
+    "diesel-repository-trait",
+    "diesel-repository-macro",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+authors = ["Stephane <selastlambou@protonmail.com>"]
+
+[workspace.dependencies]
+diesel-repository-macro = { path = "diesel-repository-macro" }
+diesel-repository-trait = { path = "diesel-repository-trait" }
+
+proc-macro2 = "1.0"
+quote = "1.0"
+syn = { version = "1", features = ["full"] }
+trybuild = "1.0"
+
+async-trait = "0.1"
+diesel = { version = "2.0", features = ["postgres"] }
+tokio = { version = "1.0", features = ["macros", "tracing", "rt-multi-thread", "sync", "time"] }
