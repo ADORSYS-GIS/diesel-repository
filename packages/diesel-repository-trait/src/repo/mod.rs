@@ -1,4 +1,4 @@
-#[cfg(feature = "sync")]
+#[cfg(not(feature = "async"))]
 pub mod synchronous;
 
 #[cfg(feature = "async")]

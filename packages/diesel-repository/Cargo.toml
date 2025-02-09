@@ -10,6 +10,5 @@ diesel-repository-macro-async = { workspace = true, optional = true }
 diesel-repository-trait = { workspace = true }
 
 [features]
-default = []
-sync = ["diesel-repository-trait/sync", "diesel-repository-macro"]
+default = ["diesel-repository-macro"]
 async = ["diesel-repository-trait/async", "diesel-repository-macro-async"]

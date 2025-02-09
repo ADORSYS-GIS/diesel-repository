@@ -1,6 +1,6 @@
 pub use diesel_repository_trait::*;
 
-#[cfg(feature = "sync")]
+#[cfg(not(feature = "async"))]
 pub use diesel_repository_macro::*;
 
 #[cfg(feature = "async")]

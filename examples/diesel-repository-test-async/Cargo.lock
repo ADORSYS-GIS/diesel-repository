@@ -121,8 +121,18 @@ dependencies = [
 name = "diesel-repository"
 version = "0.1.0"
 dependencies = [
+ "diesel-repository-macro",
  "diesel-repository-macro-async",
  "diesel-repository-trait",
+]
+
+[[package]]
+name = "diesel-repository-macro"
+version = "0.1.0"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 1.0.109",
 ]
 
 [[package]]
