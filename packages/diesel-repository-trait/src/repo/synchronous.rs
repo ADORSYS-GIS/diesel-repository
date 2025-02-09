@@ -9,7 +9,7 @@ pub trait FindOneRepo<T> {
 }
 
 pub trait FindAllPagingRepo<T> {
-    fn find_all_paging(&self, page: i64, per_page: i64) -> Result<Vec<T>, Error>;
+    fn find_all_paging(&self, page: i64, per_page: i64) -> Result<crate::Paged<T>, Error>;
 }
 
 // --- Tests for the traits ---

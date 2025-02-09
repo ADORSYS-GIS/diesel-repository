@@ -14,7 +14,7 @@ pub trait FindOneRepo<T> {
 
 #[async_trait]
 pub trait FindAllPagingRepo<T> {
-    async fn find_all_paging(&self, page: i64, per_page: i64) -> Result<Vec<T>, Error>;
+    async fn find_all_paging(&self, page: i64, per_page: i64) -> Result<crate::Paged<T>, Error>;
 }
 
 // --- Tests for the traits ---

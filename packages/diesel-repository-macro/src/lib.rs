@@ -99,7 +99,7 @@ pub fn paging_repo(_attr: TokenStream, item: TokenStream) -> TokenStream {
         #input_ast
 
         impl diesel_repository::FindAllPagingRepo<#entity_ident> for #repo_ident {
-            fn find_all_paging(&self, page: i64, per_page: i64) -> Result<Vec<#entity_ident>, diesel::result::Error> {
+            fn find_all_paging(&self, page: i64, per_page: i64) -> Result<diesel_repository::Paged<#entity_ident>, diesel::result::Error> {
                 unimplemented!("Sync paging find_all not implemented")
             }
         }

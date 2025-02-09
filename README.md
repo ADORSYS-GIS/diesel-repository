@@ -36,6 +36,22 @@ pub struct Account {
 
 This generates an `AccountRepo` type with implementations for the repository traits (both async and sync based on your feature flag).
 
+So something like this is now possible:
+
+```rust
+fn main() -> anyhow::Result<()> {
+  // Create a dummy pool (replace with your actual pool creation logic).
+  let pool = Arc::new(dummy_pool());
+  let repo = AccountRepo::new(pool);
+  println!("Sync test run completed.");
+
+  let _result: Vec<Account> = repo.find_all()?;
+  let _paged = repo.find_all_paging(1, 10)?;
+
+  Ok(())
+}
+```
+
 Look at the projects `diesel-repository-test-async` and `diesel-repository-test-sync` for more.
 
 ## Testing
