@@ -5,7 +5,7 @@ members = [
     "diesel-repository-macro",
     "diesel-repository-macro-async",
     "diesel-repository-test-async",
-    "diesel-repository-test-sync",
+    "diesel-repository-test-sync"
 ]
 resolver = "2"
 
@@ -25,7 +25,7 @@ syn = { version = "1", features = ["full"] }
 trybuild = "1.0"
 
 async-trait = "0.1"
-diesel = { version = "2.0", features = ["sqlite"] }
+diesel = { version = "2.0" }
 diesel-async = { version = "0" }
 tokio = { version = "1.0" }
 anyhow = { version = "1.0" }

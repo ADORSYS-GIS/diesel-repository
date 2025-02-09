@@ -7,5 +7,5 @@ publish = false
 
 [dependencies]
 diesel-repository = { path = "../diesel-repository", features = ["sync"] }
-diesel = { workspace = true, features = ["sqlite"] }
+diesel = { workspace = true }
 anyhow = { workspace = true }

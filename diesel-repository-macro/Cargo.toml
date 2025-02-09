@@ -12,8 +12,5 @@ proc-macro2 = { workspace = true }
 quote = { workspace = true }
 syn = { workspace = true }
 
-[dependencies.diesel-repository-trait]
-workspace = true
-
 [dev-dependencies]
 trybuild = { workspace = true }
