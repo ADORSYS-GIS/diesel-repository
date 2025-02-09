@@ -1,11 +1,9 @@
 [workspace]
 members = [
-    "diesel-repository",
-    "diesel-repository-trait",
-    "diesel-repository-macro",
-    "diesel-repository-macro-async",
-    "diesel-repository-test-async",
-    "diesel-repository-test-sync"
+    "packages/diesel-repository",
+    "packages/diesel-repository-trait",
+    "packages/diesel-repository-macro",
+    "packages/diesel-repository-macro-async"
 ]
 resolver = "2"
 
@@ -13,11 +11,12 @@ resolver = "2"
 version = "0.1.0"
 authors = ["Stephane <selastlambou@protonmail.com>"]
 
+
 [workspace.dependencies]
-diesel-repository = { path = "diesel-repository" }
-diesel-repository-trait = { path = "diesel-repository-trait" }
-diesel-repository-macro = { path = "diesel-repository-macro" }
-diesel-repository-macro-async = { path = "diesel-repository-macro-async" }
+diesel-repository = { path = "packages/diesel-repository" }
+diesel-repository-trait = { path = "packages/diesel-repository-trait" }
+diesel-repository-macro = { path = "packages/diesel-repository-macro" }
+diesel-repository-macro-async = { path = "packages/diesel-repository-macro-async" }
 
 proc-macro2 = "1.0"
 quote = "1.0"
