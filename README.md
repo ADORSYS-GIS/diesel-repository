@@ -34,6 +34,10 @@ pub struct Account {
 }
 ```
 
+This generates an `AccountRepo` type with implementations for the repository traits (both async and sync based on your feature flag).
+
+Look at the projects `diesel-repository-test-async` and `diesel-repository-test-sync` for more.
+
 ## Testing
 
 The workspace includes dedicated test packages:
