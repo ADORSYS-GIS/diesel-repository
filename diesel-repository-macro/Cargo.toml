@@ -1,0 +1,19 @@
+[package]
+name = "diesel-repository-macro"
+edition = "2021"
+version.workspace = true
+authors.workspace = true
+
+[lib]
+proc-macro = true
+
+[dependencies]
+proc-macro2 = { workspace = true }
+quote = { workspace = true }
+syn = { workspace = true }
+
+[dependencies.diesel-repository-trait]
+workspace = true
+
+[dev-dependencies]
+trybuild = { workspace = true }

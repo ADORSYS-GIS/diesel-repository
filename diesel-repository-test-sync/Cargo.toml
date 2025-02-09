@@ -1,0 +1,11 @@
+[package]
+name = "diesel-repository-test-sync"
+edition = "2021"
+version.workspace = true
+authors.workspace = true
+publish = false
+
+[dependencies]
+diesel-repository = { path = "../diesel-repository", features = ["sync"] }
+diesel = { workspace = true, features = ["sqlite"] }
+anyhow = { workspace = true }

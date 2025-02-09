@@ -2,19 +2,16 @@ use diesel::result::Error;
 
 use async_trait::async_trait;
 
-#[cfg(feature = "async")]
 #[async_trait]
 pub trait FindAllRepo<T> {
     async fn find_all(&self) -> Result<Vec<T>, Error>;
 }
 
-#[cfg(feature = "async")]
 #[async_trait]
 pub trait FindOneRepo<T> {
     async fn find_one(&self, id: i32) -> Result<Option<T>, Error>;
 }
 
-#[cfg(feature = "async")]
 #[async_trait]
 pub trait FindAllPagingRepo<T> {
     async fn find_all_paging(&self, page: i64, per_page: i64) -> Result<Vec<T>, Error>;
@@ -28,7 +25,6 @@ mod tests {
 
     struct DummyRepo;
 
-    #[cfg(feature = "async")]
     mod async_tests {
         use super::*;
         #[async_trait::async_trait]

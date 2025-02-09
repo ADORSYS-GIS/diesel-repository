@@ -1,0 +1,31 @@
+[package]
+name = "diesel-repository-macro-async"
+edition = "2021"
+version.workspace = true
+authors.workspace = true
+
+[lib]
+proc-macro = true
+
+[dependencies]
+proc-macro2 = { workspace = true }
+quote = { workspace = true }
+syn = { workspace = true }
+
+[dependencies.diesel-repository-trait]
+workspace = true
+features = ["async"]
+
+[dependencies.diesel-async]
+workspace = true
+
+[dependencies.tokio]
+workspace = true
+features = ["macros"]
+
+[dev-dependencies]
+trybuild = { workspace = true }
+
+[dev-dependencies.tokio]
+workspace = true
+features = ["full"]

@@ -1,15 +1,18 @@
 [package]
 name = "diesel-repository-trait"
-version = "0.1.0"
 edition = "2021"
+version.workspace = true
+authors.workspace = true
 
 [dependencies]
 async-trait = { workspace = true, optional = true }
-diesel = { workspace = true, features = ["postgres"] }
+diesel = { workspace = true }
 
 [dev-dependencies]
 tokio = { workspace = true, features = ["macros", "rt-multi-thread"] }
 
 
 [features]
+default = []
 async = ["async-trait"]
+sync = []

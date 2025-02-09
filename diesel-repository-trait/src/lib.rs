@@ -1,6 +1,6 @@
-pub mod repo;
+mod repo;
 
-#[cfg(not(feature = "async"))]
+#[cfg(feature = "sync")]
 pub use repo::synchronous::*;
 
 #[cfg(feature = "async")]
