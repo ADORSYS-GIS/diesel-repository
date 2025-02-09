@@ -1,9 +1,7 @@
 // Bring in the macros and traits.
 use diesel::{table, AsChangeset, Identifiable, Insertable, Queryable, Selectable};
-use diesel_repository::{crud_repo, paging_repo, Repository};
+use diesel_repository::{crud_repo, paging_repo, FindAllPagingRepo, FindAllRepo, Repository};
 use std::sync::Arc;
-
-use diesel_repository::{FindAllPagingRepo, FindAllRepo};
 
 table! {
     accounts {
@@ -40,7 +38,7 @@ pub struct Account {
 fn main() -> anyhow::Result<()> {
     // Create a dummy pool (replace with your actual pool creation logic).
     let pool = Arc::new(dummy_pool());
-    let repo = AccountRepository::new(pool);
+    let repo = AccountRepo::new(pool);
     println!("Sync test run completed.");
 
     let _result: Vec<Account> = repo.find_all()?;

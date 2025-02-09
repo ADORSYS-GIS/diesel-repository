@@ -14,5 +14,5 @@ tokio = { workspace = true, features = ["macros", "rt-multi-thread"] }
 
 [features]
 default = []
-async = ["async-trait"]
 sync = []
+async = ["async-trait"]

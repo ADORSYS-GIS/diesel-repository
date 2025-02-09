@@ -44,7 +44,7 @@ pub fn repository_derive(input: TokenStream) -> TokenStream {
     }
     let pool_path = pool_path.expect("Missing #[repository(pool = \"...\")] attribute");
 
-    let repo_ident = Ident::new(&format!("{}Repository", entity_ident), entity_ident.span());
+    let repo_ident = Ident::new(&format!("{}AsyncRepo", entity_ident), entity_ident.span());
 
     let expanded = quote! {
         pub struct #repo_ident {
@@ -66,7 +66,7 @@ pub fn repository_derive(input: TokenStream) -> TokenStream {
 pub fn crud_repo(_attr: TokenStream, item: TokenStream) -> TokenStream {
     let input_ast = parse_macro_input!(item as ItemStruct);
     let entity_ident = &input_ast.ident;
-    let repo_ident = Ident::new(&format!("{}Repository", entity_ident), entity_ident.span());
+    let repo_ident = Ident::new(&format!("{}AsyncRepo", entity_ident), entity_ident.span());
 
     let expanded = quote! {
         #input_ast
@@ -94,7 +94,7 @@ pub fn crud_repo(_attr: TokenStream, item: TokenStream) -> TokenStream {
 pub fn paging_repo(_attr: TokenStream, item: TokenStream) -> TokenStream {
     let input_ast = parse_macro_input!(item as ItemStruct);
     let entity_ident = &input_ast.ident;
-    let repo_ident = Ident::new(&format!("{}Repository", entity_ident), entity_ident.span());
+    let repo_ident = Ident::new(&format!("{}AsyncRepo", entity_ident), entity_ident.span());
 
     let expanded = quote! {
         #input_ast
