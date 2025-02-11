@@ -1,12 +1,16 @@
-use diesel::QueryableByName;
 use diesel::sql_types::BigInt;
+use diesel::QueryableByName;
 
-#[derive(Debug)]
+/// A simple structure to hold paginated results.
 pub struct Paged<T> {
+    /// The records for the current page.
     pub items: Vec<T>,
-    pub total: i64,
+    /// The total number of records matching the query.
+    pub total_count: i64,
+    /// The current page number (e.g. 1-indexed).
     pub page: i64,
-    pub size: i64,
+    /// The number of records per page.
+    pub per_page: i64,
 }
 
 #[derive(QueryableByName, Debug)]
