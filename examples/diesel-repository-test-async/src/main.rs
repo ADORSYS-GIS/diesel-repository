@@ -1,6 +1,7 @@
 // Bring in the macros and traits:
-use diesel::{table, AsChangeset, Identifiable, Insertable, Queryable, Selectable};
-use diesel_repository::{crud_repo, paging_repo, FindAllPagingRepo, FindAllRepo, Repository};
+use diesel::result::Error;
+use diesel::{table, AsChangeset, Identifiable, Insertable, QueryDsl, Queryable, Selectable};
+use diesel_repository::{Count, FindAll, FindByQuery, Repo};
 use std::sync::Arc;
 
 table! {
@@ -26,12 +27,14 @@ pub mod db {
 
 // An entity with a derive macro.
 #[derive(
-    Debug, Eq, PartialEq, Queryable, Identifiable, Selectable, Insertable, AsChangeset, Repository,
+    Debug, Eq, PartialEq, Queryable, Identifiable, Selectable, Insertable, AsChangeset, Repo,
 )]
 #[repository(pool = "db::DbPool")]
 #[diesel(table_name = crate::accounts)]
 #[crud_repo(find_all, find_one, insert, update, delete)]
 #[paging_repo(find_all)]
+#[repo_table_name("crate::accounts")]
+#[id_type("String")]
 pub struct Account {
     pub id: String,
     pub sub: String,
@@ -61,4 +64,21 @@ fn dummy_pool() -> db::DbPool {
     // In a real async setup, you’d initialize your diesel_async pool.
     // For testing, we simply return an instance of our dummy type.
     db::DummyPool
+}
+
+use diesel_async::pooled_connection::deadpool::Pool;
+use diesel_async::{AsyncPgConnection, RunQueryDsl};
+
+pub struct Miaou {
+    pool: Arc<Pool<AsyncPgConnection>>,
+}
+
+pub struct Waff;
+
+impl FindAll<Waff> for Miaou {
+    async fn find_all(&self) -> Result<Vec<Waff>, Error> {
+        let mut conn = self.pool.get().await?;
+        let res = accounts::table.load(&mut conn).await?;
+        Ok(res)
+    }
 }

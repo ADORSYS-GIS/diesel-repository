@@ -1,7 +1,7 @@
 mod model;
 mod repo;
 
-pub use model::{Count, Paged};
+pub use model::{ViewCount, Paged};
 
 #[cfg(not(feature = "async"))]
 pub use repo::synchronous::*;

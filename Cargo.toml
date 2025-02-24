@@ -18,13 +18,15 @@ diesel-repository-trait = { path = "packages/diesel-repository-trait" }
 diesel-repository-macro = { path = "packages/diesel-repository-macro" }
 diesel-repository-macro-async = { path = "packages/diesel-repository-macro-async" }
 
+proc-macro-error2 = "2"
 proc-macro2 = "1.0"
 quote = "1.0"
-syn = { version = "1", features = ["full"] }
+darling = { version = "0" }
+syn = { version = "2", features = ["full"] }
 trybuild = "1.0"
 
 async-trait = "0.1"
 diesel = { version = "2.0" }
-diesel-async = { version = "0" }
+diesel-async = { version = "0", features = ["pool", "deadpool", "postgres"] }
 tokio = { version = "1.0" }
 anyhow = { version = "1.0" }

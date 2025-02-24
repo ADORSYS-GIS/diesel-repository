@@ -14,7 +14,7 @@ pub struct Paged<T> {
 }
 
 #[derive(QueryableByName, Debug)]
-pub struct Count {
+pub struct ViewCount {
     #[sql_type = "BigInt"]
     pub count: i64,
 }

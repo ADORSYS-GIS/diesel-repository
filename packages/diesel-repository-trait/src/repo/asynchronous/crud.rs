@@ -11,16 +11,16 @@ pub trait FindById<T, ID> {
 /// Trait for retrieving a single record using a Diesel query.
 /// Useful when you expect the query to return exactly one row.
 #[async_trait]
-pub trait FindOneByQuery<T, Q> {
+pub trait FindOneByQuery<T> {
     /// Executes the query and returns one record.
-    async fn find_one_by_query(&self, query: Q) -> Result<T, Error>;
+    async fn find_one_by_query<Q: diesel::QueryDsl>(&self, query: Q) -> Result<T, Error>;
 }
 
 /// Trait for retrieving multiple records using a Diesel query.
 #[async_trait]
-pub trait FindByQuery<T, Q> {
+pub trait FindByQuery<T> {
     /// Executes the query and returns a vector of matching records.
-    async fn find_by_query(&self, query: Q) -> Result<Vec<T>, Error>;
+    async fn find_by_query<Q: diesel::QueryDsl>(&self, query: Q) -> Result<Vec<T>, Error>;
 }
 
 /// Trait for retrieving all records from a table.
@@ -60,7 +60,7 @@ pub trait Delete<ID> {
 
 /// Trait for counting records matching a query.
 #[async_trait]
-pub trait Count<Q> {
+pub trait Count {
     /// Returns the count of records that match the provided query.
-    async fn count(&self, query: Q) -> Result<i64, Error>;
+    async fn count<Q: diesel::QueryDsl>(&self, query: Q) -> Result<i64, Error>;
 }

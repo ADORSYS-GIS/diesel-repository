@@ -4,7 +4,7 @@ use crate::Paged;
 
 /// Trait for executing a paged query using a Diesel query builder.
 #[async_trait]
-pub trait FindByQueryPaged<T, Q> {
+pub trait FindByQueryPaged<T> {
     /// Executes the query with pagination.
     ///
     /// - `query`: A Diesel query builder instance.
@@ -12,7 +12,7 @@ pub trait FindByQueryPaged<T, Q> {
     /// - `per_page`: The number of records per page.
     ///
     /// Returns a [`Paged<T>`] containing the items and pagination metadata.
-    async fn find_by_query_paged(
+    async fn find_by_query_paged<Q: diesel::QueryDsl>(
         &self,
         query: Q,
         page: i64,
