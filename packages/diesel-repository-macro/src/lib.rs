@@ -9,10 +9,7 @@ use syn::{parse_macro_input, DeriveInput};
 
 /// The derive macro for `repo`.
 #[proc_macro_error]
-#[proc_macro_derive(
-    Repo,
-    attributes(repository, diesel, repo_type, crud_repo, paging_repo,)
-)]
+#[proc_macro_derive(Repo, attributes(repository, repo_type, crud_repo, paging_repo))]
 pub fn repository_derive(input: TokenStream) -> TokenStream {
     let input = parse_macro_input!(input as DeriveInput);
     derive(&input)

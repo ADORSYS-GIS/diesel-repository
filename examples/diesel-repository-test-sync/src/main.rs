@@ -1,6 +1,6 @@
 // Bring in the macros and traits.
 use diesel::{table, AsChangeset, Identifiable, Insertable, Queryable, Selectable};
-use diesel_repository::{FindByQuery, Repo};
+use diesel_repository::Repo;
 use std::sync::Arc;
 
 table! {
@@ -25,6 +25,7 @@ pub mod db {
 #[derive(
     Debug, Eq, PartialEq, Queryable, Identifiable, Selectable, Insertable, AsChangeset, Repo,
 )]
+#[diesel(table_name = crate::accounts)]
 #[repository(pool = "db::DbPool", table_name = "crate::accounts")]
 #[repo_type(id_type = String)]
 #[crud_repo(find, find_query)]

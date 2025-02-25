@@ -1,5 +1,4 @@
 use darling::{FromDeriveInput, FromMeta};
-use syn::LitStr;
 
 #[derive(Debug, FromDeriveInput)]
 #[darling(
@@ -10,10 +9,10 @@ pub struct RepoOpts {
     pub ident: syn::Ident,
 
     #[darling(default)]
-    pub repo_type: RepoTypeOpts,
+    pub repository: RepositoryOpts,
 
     #[darling(default)]
-    pub repository: RepositoryOpts,
+    pub repo_type: RepoTypeOpts,
 
     #[darling(default)]
     pub crud_repo: Option<CrudRepoOpts>,
@@ -29,41 +28,76 @@ pub struct RepoOpts {
 pub struct RepoTypeOpts {
     #[darling(default)]
     pub id_type: Option<syn::Ident>,
-    
+
     #[darling(default)]
     pub new_type: Option<syn::Ident>,
-    
+
     #[darling(default)]
     pub update_type: Option<syn::Ident>,
 }
 
 #[derive(Debug, Default, FromMeta)]
+#[darling(default)]
 pub struct RepositoryOpts {
     /// Expecting something like: #[repository(pool = "db::DbPool")]
+    #[darling(default)]
     pub pool: Option<syn::Path>,
+
+    #[darling(default)]
     pub table_name: Option<syn::Path>,
 }
 
 #[derive(Debug, Default, FromMeta)]
 pub struct CrudRepoOpts {
-    /// Expecting a list of method names, e.g.
-    /// #[crud_repo(find_all, find_one, insert, update, delete)]
     #[darling(default)]
-    pub methods: Vec<LitStr>,
+    pub find_one: bool,
+
+    #[darling(default)]
+    pub find_one_query: bool,
+
+    #[darling(default)]
+    pub find_query: bool,
+
+    #[darling(default)]
+    pub find_all: bool,
+
+    #[darling(default)]
+    pub save: bool,
+
+    #[darling(default)]
+    pub update: bool,
+
+    #[darling(default)]
+    pub replace: bool,
+
+    #[darling(default)]
+    pub delete: bool,
+
+    #[darling(default)]
+    pub count: bool
 }
 
 #[derive(Debug, Default, FromMeta)]
 pub struct PagingRepoOpts {
-    /// Expecting a list of paging methods, e.g.
-    /// #[paging_repo(find_all)]
     #[darling(default)]
-    pub methods: Vec<LitStr>,
+    pub find_query: bool,
+
+    #[darling(default)]
+    pub find_all: bool
 }
 
 #[derive(Debug, Default, FromMeta)]
 pub struct BatchRepoOpts {
-    /// Expecting a list of paging methods, e.g.
-    /// #[paging_repo(find_all)]
+
     #[darling(default)]
-    pub methods: Vec<LitStr>,
+    pub find: bool,
+    
+    #[darling(default)]
+    pub save: bool,
+    
+    #[darling(default)]
+    pub update: bool,
+    
+    #[darling(default)]
+    pub delete: bool
 }
