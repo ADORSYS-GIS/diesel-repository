@@ -8,11 +8,12 @@ authors.workspace = true
 proc-macro = true
 
 [dependencies]
-proc-macro2 = { workspace = true }
-quote = { workspace = true }
 syn = { workspace = true }
-darling = { workspace = true }
 proc-macro-error2 = { workspace = true }
 
-[dev-dependencies]
-trybuild = { workspace = true }
+diesel-repository-macro-core = { workspace = true }
+diesel-repository-macro-sync = { workspace = true }
+diesel-repository-macro-async = { workspace = true, optional = true }
+
+[features]
+async = ["diesel-repository-macro-async"]

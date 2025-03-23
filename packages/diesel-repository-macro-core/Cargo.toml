@@ -1,0 +1,12 @@
+[package]
+name = "diesel-repository-macro-core"
+edition = "2021"
+version.workspace = true
+authors.workspace = true
+
+[dependencies]
+syn = { workspace = true }
+darling = { workspace = true }
+
+[dev-dependencies]
+proc-macro2 = { workspace = true }

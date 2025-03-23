@@ -64,7 +64,25 @@ dependencies = [
 name = "diesel-repository-macro"
 version = "0.1.0"
 dependencies = [
+ "diesel-repository-macro-core",
+ "diesel-repository-macro-sync",
+ "proc-macro-error2",
+ "syn",
+]
+
+[[package]]
+name = "diesel-repository-macro-core"
+version = "0.1.0"
+dependencies = [
  "darling",
+ "syn",
+]
+
+[[package]]
+name = "diesel-repository-macro-sync"
+version = "0.1.0"
+dependencies = [
+ "diesel-repository-macro-core",
  "proc-macro-error2",
  "proc-macro2",
  "quote",

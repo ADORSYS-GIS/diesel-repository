@@ -1,5 +1,7 @@
 // Bring in the macros and traits.
 use diesel::{table, AsChangeset, Identifiable, Insertable, Queryable, Selectable};
+use diesel_repository::FindAll;
+use diesel_repository::FindAllPaged;
 use diesel_repository::Repo;
 use std::sync::Arc;
 
@@ -26,9 +28,9 @@ pub mod db {
     Debug, Eq, PartialEq, Queryable, Identifiable, Selectable, Insertable, AsChangeset, Repo,
 )]
 #[diesel(table_name = crate::accounts)]
-#[repository(pool = "db::DbPool", table_name = "crate::accounts")]
+#[repository(pool = db::DbPool, table_name = crate::accounts)]
 #[repo_type(id_type = String)]
-#[crud_repo(find, find_query)]
+#[crud_repo(find_one, find_one_query, find_all)]
 #[paging_repo(find_all)]
 pub struct Account {
     pub id: String,
@@ -43,7 +45,7 @@ fn main() -> anyhow::Result<()> {
     println!("Sync test run completed.");
 
     let _result: Vec<Account> = repo.find_all()?;
-    let _paged = repo.find_all_paging(1, 10)?;
+    let _paged = repo.find_all_paged(1, 10)?;
 
     Ok(())
 }

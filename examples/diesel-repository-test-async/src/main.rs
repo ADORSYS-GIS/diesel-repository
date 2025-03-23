@@ -46,7 +46,7 @@ pub struct Account {
 async fn main() -> anyhow::Result<()> {
     // Create a dummy pool. (Replace with your real pool creation.)
     let pool = Arc::new(dummy_pool());
-    let repo = AccountAsyncRepo::new(pool);
+    let repo = AccountRepo::new(pool);
 
     // The following calls will trigger the unimplemented!() (as placeholders)
     // You can later replace these with actual implementations.

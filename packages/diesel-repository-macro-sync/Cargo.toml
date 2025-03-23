@@ -1,5 +1,5 @@
 [package]
-name = "diesel-repository-macro-async"
+name = "diesel-repository-macro-sync"
 edition = "2021"
 version.workspace = true
 authors.workspace = true
@@ -11,16 +11,3 @@ syn = { workspace = true }
 diesel-repository-macro-core = { workspace = true }
 proc-macro-error2 = { workspace = true }
 
-[dependencies.diesel-async]
-workspace = true
-
-[dependencies.tokio]
-workspace = true
-features = ["macros"]
-
-[dev-dependencies]
-trybuild = { workspace = true }
-
-[dev-dependencies.tokio]
-workspace = true
-features = ["full"]

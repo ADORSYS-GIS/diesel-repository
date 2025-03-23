@@ -5,10 +5,8 @@ version.workspace = true
 authors.workspace = true
 
 [dependencies]
-diesel-repository-macro = { workspace = true, optional = true }
-diesel-repository-macro-async = { workspace = true, optional = true }
+diesel-repository-macro = { workspace = true }
 diesel-repository-trait = { workspace = true }
 
 [features]
-default = ["diesel-repository-macro"]
-async = ["diesel-repository-trait/async", "diesel-repository-macro-async"]
+async = ["diesel-repository-trait/async", "diesel-repository-macro/async"]
